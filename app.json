@@ -5,18 +5,30 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "messaging",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Sesli mesaj göndermek için mikrofon izni gerekiyor.",
+        "NSPhotoLibraryUsageDescription": "Fotoğraf göndermek için galeri izni gerekiyor.",
+        "NSCameraUsageDescription": "Fotoğraf çekmek için kamera izni gerekiyor."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "RECORD_AUDIO"
+      ]
     },
+    "platforms": ["ios", "android", "web"],
     "web": {
       "bundler": "metro",
       "output": "static",
@@ -32,10 +44,24 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Fotoğraflarınıza erişim izni gerekiyor.",
+          "cameraPermission": "Kameranıza erişim izni gerekiyor."
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Mikrofona erişim izni gerekiyor."
+        }
       ]
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "tsconfigPaths": true
     }
   }
 }
